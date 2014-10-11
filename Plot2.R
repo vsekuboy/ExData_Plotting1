@@ -20,10 +20,12 @@ if (is.null(PowerData)) {
 
 colnames(PowerData)<-c("Date","Time","Global_active_power","Global_reactive_power","Voltage","Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3")
 
-# Plot Histogram into the file "Plot1.png"
-png ("Plot1.png", width=480, height=480, units="px", bg="white")
-hist(PowerData$Global_active_power, main="Global Active Power", xlab="Global Active Power (kilowatts)", col="red")
+# For Creating the graph, convert date and time
+
+DateTime<- strptime(paste(PowerData$Date, PowerData$Time), format="%d/%m/%Y %H:%M:%S")
+
+# Plot a line graph into the file "Plot2.png"
+png ("Plot2.png", width=480, height=480, units="px", bg="white")
+
+plot (DateTime, PowerData$Global_active_power, type="l", xlab="", ylab="PowerData$Global_active_power")
 dev.off()
-
-
-
