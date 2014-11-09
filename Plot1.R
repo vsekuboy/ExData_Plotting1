@@ -1,6 +1,9 @@
 # The data for dates Feb-1 and Feb-2 are in the rows from 66638 to 69517
 # Hence read the file by skipping 66636 rows (1st row is the header) and read
-# 2880 rows
+# 2880 rows. This is probably not very efficient if the data is not 
+# sequentially organized and if the number of rows is not known.
+# this method of reading fixed number of rows is adopted only for ease.
+# Else, reading the data sequentially is the best way
 
 RowNum <- 66636
 NumRows <- 2880

@@ -1,6 +1,9 @@
 # The data for dates Feb-1 and Feb-2 are in the rows from 66638 to 69517
 # Hence read the file by skipping 66636 rows (1st row is the header) and read
-# 2880 rows
+# 2880 rows. This is probably not very efficient if the data is not 
+# sequentially organized and if the number of rows is not known.
+# this method of reading fixed number of rows is adopted only for ease.
+# Else, reading the data sequentially is the best way
 
 RowNum <- 66636
 NumRows <- 2880
@@ -32,7 +35,7 @@ png ("Plot4.png", width=480, height=480, units="px", bg="white")
 par (mfrow=c(2, 2))
 
 # Draw Plot1
-plot (DateTime, PowerData$Global_active_power, type="l", xlab="", ylab="PowerData$Global_active_power")
+plot (DateTime, PowerData$Global_active_power, type="l", xlab="", ylab="Global Active Power")
 
 # Draw Plot2
 plot (DateTime, PowerData$Voltage, type="l", xlab="datetime", ylab="Voltage")
